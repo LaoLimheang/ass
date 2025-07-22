@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/src/image/logo.png" type="icon/image">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="/src/css/daboard.css">
+    <title>Daboard</title>
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="logo"><i class="fa fa-bag-shopping"></i></div>
+      <nav>
+        <ul>
+          <li class="active"><i class="fa fa-home"></i> Dashboard</li>
+          <li><i class="fa fa-box"></i> Products</li>
+          <li><i class="fa fa-list"></i> Category</li>
+          <li><i class="fa fa-chart-line"></i> Sales</li>
+          <li><i class="fa fa-file"></i> Reports</li>
+          <li><i class="fa fa-cog"></i> Setting</li>
+        </ul>
+      </nav>
+      <button class="logout"><i class="fa fa-sign-out-alt"></i> Log Out</button>
+    </aside>
+
+    <main class="main-content">
+      <header class="header">
+  <h2>hello everyone | group 1</h2>
+  <div class="header-icons">
+    <div class="icon-wrapper">
+      <i class="fa fa-bell" id="notifBtn"></i>
+      <div class="popup" id="notifPopup">You have 3 new notifications!</div>
+    </div>
+    <div class="icon-wrapper">
+      <i class="fa fa-envelope" id="msgBtn"></i>
+      <div class="popup" id="msgPopup">You have 1 unread message.</div>
+    </div>
+    <img src="/src/image/logo.png" alt="User Profile" class="avatar">
+  </div>
+  <script>
+  // Toggle notification popup
+  const notifBtn = document.getElementById("notifBtn");
+  const notifPopup = document.getElementById("notifPopup");
+
+  const msgBtn = document.getElementById("msgBtn");
+  const msgPopup = document.getElementById("msgPopup");
+
+  notifBtn.addEventListener("click", () => {
+    notifPopup.style.display = notifPopup.style.display === "block" ? "none" : "block";
+    msgPopup.style.display = "none"; // close other
+  });
+
+  msgBtn.addEventListener("click", () => {
+    msgPopup.style.display = msgPopup.style.display === "block" ? "none" : "block";
+    notifPopup.style.display = "none"; // close other
+  });
+
+  // Optional: Close when clicking outside
+  document.addEventListener("click", function (event) {
+    if (!event.target.closest(".icon-wrapper")) {
+      notifPopup.style.display = "none";
+      msgPopup.style.display = "none";
+    }
+  });
+</script>
+
+</header>
+
+
+      <section class="stats-cards">
+        <div class="card customers"><h3>Customers</h3><p>31,210</p></div>
+        <div class="card incomes"><h3>Incomes</h3><p>$980,530</p></div>
+        <div class="card sold"><h3>Products Sold</h3><p>$25,280</p></div>
+      </section>
+
+      <div class="finance-chart-container">
+        
+        <h2 class="chart-title">Finance Flow</h2>
+
+        <div class="chart-area">
+            <!-- Y-Axis Labels -->
+            <div class="y-axis-labels">
+                <span>$60,000.00</span>
+                <span>$50,000.00</span>
+                <span>$40,000.00</span>
+                <span>$30,000.00</span>
+                <span>$20,000.00</span>
+                <span>$10,000.00</span>
+                <span>$0.00</span>
+            </div>
+
+            <!-- Graph and X-Axis -->
+            <div class="graph-and-xaxis">
+                <!-- Dashed Grid Lines -->
+                <div class="grid-lines">
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                </div>
+                <!-- SVG container for the line graph -->
+                <div class="svg-container">
+                    <svg width="100%" height="100%" viewBox="0 0 500 150" preserveAspectRatio="none" style="z-index: 10; position:relative;">
+                        <!-- The line path -->
+                        <polyline
+                            fill="none"
+                            stroke="#8b5cf6"
+                            stroke-width="2"
+                            points="
+                                10,125
+                                60,140
+                                120,100
+                                180,65
+                                240,65
+                                300,35
+                                360,20
+                                420,10
+                            "
+                        />
+                    </svg>
+                </div>
+                
+                <!-- X-Axis Labels -->
+                <div class="x-axis-labels">
+                    <span>January</span>
+                    <span>February</span>
+                    <span>March</span>
+                    <span>April</span>
+                    <span>May</span>
+                    <span>June</span>
+                    <span>July</span>
+                    <span>August</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Left Information -->
+        <div class="bottom-info">
+            <p class="amount">$52,210</p>
+            <p class="date">August 2025</p>
+        </div>
+    </div>
+
+      <section class="recent-orders">
+        <h3>Recent Orders</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>No</th><th>Name</th><th>Quantity</th><th>Status</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>RTX 5090</td><td>30</td><td class="pending">Pending</td>
+              <td>
+                <button class="edit"><i class="fa fa-edit"></i></button>
+                <button class="delete"><i class="fa fa-trash"></i></button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <footer class="dashboard-footer">
+  <p>&copy; group1. All rights reserved.</p>
+</footer>
+
+  <script>
+    // Add this at the bottom of your HTML or inside a <script> tag
+document.querySelectorAll('.sidebar nav ul li').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar nav ul li').forEach(li => li.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+  </script>
+</body>
+
+</html>

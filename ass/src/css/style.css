@@ -1,0 +1,266 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    display: flex;
+}
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 250px;
+    backdrop-filter: blur(30px);
+    color: black;
+    height: 100vh;
+    position: fixed;
+    padding: 20px;
+    z-index: 9999;
+}
+.sidebar .logo i{
+    padding: 20px;
+    font-size: 60px;
+    display: flex;
+    justify-content: center;
+}
+.sidebar nav ul li{
+    border: 1px solid rgba(0, 0, 0, 0.057);
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.162);
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    gap: 8px;
+    transition: 0.2s ease-in-out;
+}
+.sidebar nav ul li:hover{
+    transition: 0.2s ease-in-out;
+    transform: translate(10px);
+}
+.sidebar nav ul li:hover li:not(:hover){
+    opacity: .7;
+    backdrop-filter: blur(30px);
+}
+
+ .sidebar nav ul li.active{
+    background-color: black;
+    color: white;
+ }
+.sidebar .logout {
+  padding: 10px;
+  background-color: white;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s ease-in-out;
+}
+
+.sidebar .logout:hover {
+  background-color: black;
+  color: white;
+  transform: scale(1.01);
+  transition: 0.2s ease-in-out;
+  box-shadow: 0 2px 5px rgba(255, 255, 255, 0.436);
+}
+
+.dashboard-content{
+    background-image: url(/src/image/2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: white;
+    margin-left: 250px;
+    padding: 30px;
+    height: 100vh;
+    width: 1100px ;
+}
+.dashboard-content .header{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    cursor: pointer;
+}
+.header h2{
+    background-color: white;
+    color: black;
+    padding: 10px;
+    border-radius: 20px 0;
+    transition: 0.2s ease-in-out;
+}
+.header h2:hover{
+    transform: scale(1.1);
+    transition: 0.2s ease-in-out;
+    box-shadow: 0 0 10px white;
+}
+
+.dashboard-content .header-icons{
+    display: flex;
+    padding: 20px;
+    align-items: center;
+}
+.dashboard-content .header-icons .icon-wrapper:hover{
+    transition: 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+.dashboard-content .header .header-icons .icon-wrapper{
+    margin: 20px;
+    justify-content: space-around;
+    display: flex;
+    transition: 0.2s ease-in-out;
+}
+.dashboard-content .header-icons img:hover{
+    transition: 0.2s ease-in-out;
+    transform: scale(1.1);
+}
+.dashboard-content .header .header-icons img{
+    border-radius: 0 20px 0 20px;
+    transition: 0.2s ease-in-out;
+}
+.customer{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.customer .box1, .box2, .box3{
+    margin: 10px;
+    backdrop-filter: blur(30px);
+    color: black;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    border-radius: 10px;
+}
+.customer .icon{
+    font-size: 20px;
+}
+.customer .box1{
+    animation: flash 6s linear infinite;
+}
+.customer .box2{
+    animation: flash 6s linear infinite;
+    animation-delay: 2s;
+}
+.customer .box3{
+    animation: flash 6s linear infinite;
+    animation-delay: 4s;
+}
+@keyframes flash {
+    0%{
+        box-shadow: 0 0 10px white;
+    }    
+    50%{
+        box-shadow: 0 0 10px black;
+    }
+    100%{
+        box-shadow: 0 0 10px white;
+    }
+}
+
+
+.finance-chart-container {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.479);
+  padding: 20px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  backdrop-filter: blur(30px);
+  color: black;
+}
+
+.chart-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Layout of the chart area */
+.chart-area {
+  display: flex;
+  flex-direction: row;
+  height: 150px;
+  position: relative;
+}
+
+/* Y-Axis Labels */
+.y-axis-labels {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-right: 10px;
+  font-size: 12px;
+  color: black;
+  height: 100%;
+}
+
+/* Graph and X-Axis */
+.graph-and-xaxis {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Dashed Grid Lines */
+.grid-lines {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 0;
+}
+
+.grid-line {
+  height: 1px;
+  width: 100%;
+  border-top: 1px dashed #ccc;
+}
+
+/* SVG Chart */
+.svg-container {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.svg-container svg {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+/* X-Axis Labels */
+.x-axis-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  color: #777;
+  padding-top: 10px;
+}
+
+/* Bottom Information */
+.bottom-info {
+  margin-top: 20px;
+}
+
+.bottom-info .amount {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.bottom-info .date {
+  font-size: 14px;
+  color: black;
+}
